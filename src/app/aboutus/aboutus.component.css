@@ -1,0 +1,10 @@
+.list {
+    color: green;
+    display: flex;
+    margin: 10px;
+}
+
+.list-menu {
+    display: flex;
+    gap: 2rem;
+}
