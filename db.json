@@ -1,4 +1,3 @@
-
 {
     "locations":
     [
@@ -8,7 +7,7 @@
             "city": "Gdańsk",
             "state": "PL",
             "photo": "https://res.cloudinary.com/dj484tw6k/f_auto,q_auto,c_pad,b_white,w_505,h_505/v1635506684/876f4ac6-57cf-4150-a794-7afedc76ec4a.jpg",
-            "availableUnit": "999",
+            "availableUnit": 999,
             "wifi": true,
             "laundry": false  
           },
