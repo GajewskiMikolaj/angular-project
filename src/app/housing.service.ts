@@ -7,105 +7,19 @@ import { Housinglocation } from './housinglocation';
 
 export class HousingService {
 
-  protected housinglocationList: Housinglocation[] = [
-    {
-      id: 1,
-      name: 'Mieszkanie 1',
-      city: 'Gdańsk',
-      state: 'PL',
-      photo: 'https://res.cloudinary.com/dj484tw6k/f_auto,q_auto,c_pad,b_white,w_505,h_505/v1635506684/876f4ac6-57cf-4150-a794-7afedc76ec4a.jpg',
-      availableUnit: 999,
-      wifi: true,
-      laundry: false  
-    },
-    {
-      id: 2,
-      name: 'Mieszkanie 2',
-      city: 'Warszawa',
-      state: 'PL',
-      photo: 'https://res.cloudinary.com/dj484tw6k/f_auto,q_auto,c_pad,b_white,w_505,h_505/v1635506684/876f4ac6-57cf-4150-a794-7afedc76ec4a.jpg',
-      availableUnit: 999,
-      wifi: true,
-      laundry: false  
-    },
-    {
-      id: 3,
-      name: 'Mieszkanie 3',
-      city: 'Poznań',
-      state: 'PL',
-      photo: 'https://res.cloudinary.com/dj484tw6k/f_auto,q_auto,c_pad,b_white,w_505,h_505/v1635506684/876f4ac6-57cf-4150-a794-7afedc76ec4a.jpg',
-      availableUnit: 999,
-      wifi: true,
-      laundry: false  
-    },
-    {
-      id: 4,
-      name: 'Mieszkanie 4',
-      city: 'Gdańsk',
-      state: 'PL',
-      photo: 'https://res.cloudinary.com/dj484tw6k/f_auto,q_auto,c_pad,b_white,w_505,h_505/v1635506684/876f4ac6-57cf-4150-a794-7afedc76ec4a.jpg',
-      availableUnit: 999,
-      wifi: true,
-      laundry: false  
-    },
-    {
-      id: 5,
-      name: 'Mieszkanie 5',
-      city: 'Gdynia',
-      state: 'PL',
-      photo: 'https://res.cloudinary.com/dj484tw6k/f_auto,q_auto,c_pad,b_white,w_505,h_505/v1635506684/876f4ac6-57cf-4150-a794-7afedc76ec4a.jpg',
-      availableUnit: 999,
-      wifi: true,
-      laundry: false  
-    },
-    {
-      id: 6,
-      name: 'Mieszkanie 6',
-      city: 'Gdańsk',
-      state: 'PL',
-      photo: 'https://res.cloudinary.com/dj484tw6k/f_auto,q_auto,c_pad,b_white,w_505,h_505/v1635506684/876f4ac6-57cf-4150-a794-7afedc76ec4a.jpg',
-      availableUnit: 999,
-      wifi: true,
-      laundry: false  
-    },
-    {
-      id: 6,
-      name: 'Mieszkanie 7',
-      city: 'Wrocław',
-      state: 'PL',
-      photo: 'https://res.cloudinary.com/dj484tw6k/f_auto,q_auto,c_pad,b_white,w_505,h_505/v1635506684/876f4ac6-57cf-4150-a794-7afedc76ec4a.jpg',
-      availableUnit: 999,
-      wifi: true,
-      laundry: false  
-    },
-    {
-      id: 6,
-      name: 'Mieszkanie 8',
-      city: 'Kraków',
-      state: 'PL',
-      photo: 'https://res.cloudinary.com/dj484tw6k/f_auto,q_auto,c_pad,b_white,w_505,h_505/v1635506684/876f4ac6-57cf-4150-a794-7afedc76ec4a.jpg',
-      availableUnit: 999,
-      wifi: true,
-      laundry: false  
-    },
-    {
-      id: 6,
-      name: 'Mieszkanie 9',
-      city: 'Toruń',
-      state: 'PL',
-      photo: 'https://res.cloudinary.com/dj484tw6k/f_auto,q_auto,c_pad,b_white,w_505,h_505/v1635506684/876f4ac6-57cf-4150-a794-7afedc76ec4a.jpg',
-      availableUnit: 999,
-      wifi: true,
-      laundry: false  
-    },
-  ];
-  getAllHousingLocation(): Housinglocation[] {
-    return this.housinglocationList
-  };
+  url = 'http://localhost:3000/locations';
 
-  getHousingLocationById(id:number): Housinglocation | undefined {
-    return this.housinglocationList.find(housinglocation =>
-           housinglocation.id === id)
+  async getAllHousingLocations(): Promise<Housinglocation[]> {
+    const data = await fetch(this.url)
+    return await data.json() ?? []
   }
 
+  async getHousingLocationsById(id:number): Promise<Housinglocation | undefined> {
+    const data = await fetch ('${this.url}/${id}')
+    return await data.json() ?? []
+  }
+
+  submitApplication(firstName: string, lastName: string, email: string) {
+    console.log(`firstName: ${firstName}, lastName: ${lastName}, email: ${email}`)
+  }
 }
